@@ -2,16 +2,27 @@ package com.ltp.globalsuperstore;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.util.Date;
 import java.util.UUID;
 
 public class Item {
     private String id;
+
+    @NotBlank(message = "Please choose a category")
     private String category;
+    @NotBlank(message = "Name cannot be blank")
     private String name;
+    @Min(value = 0, message = "Price cannot be negative")
     private Double price;
+    @Min(value = 0, message = "Discount cannot be negative")
     private Double discount;
 
+    @Past(message = "Date must be in the past")
+    @NotNull(message = "Date cannot be null")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
@@ -74,6 +85,4 @@ public class Item {
     public void setDate(Date date) {
         this.date = date;
     }
-
-
 }
