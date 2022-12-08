@@ -1,4 +1,4 @@
-package com.ltp.globalsuperstore;
+package com.ltp.globalsuperstore.pojo;
 
 import org.springframework.format.annotation.DateTimeFormat;
 

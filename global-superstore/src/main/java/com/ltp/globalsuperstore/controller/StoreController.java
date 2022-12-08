@@ -1,6 +1,6 @@
 package com.ltp.globalsuperstore.controller;
 
-import com.ltp.globalsuperstore.Item;
+import com.ltp.globalsuperstore.pojo.Item;
 import com.ltp.globalsuperstore.service.StoreService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +15,11 @@ import javax.validation.Valid;
 @Controller
 public class StoreController {
 
-    StoreService storeService = new StoreService();
+    StoreService storeService;
+
+    public StoreController(StoreService storeService) {
+        this.storeService = storeService;
+    }
 
     @GetMapping("/")
     public String getForm(Model model, @RequestParam(required = false) String id) {
